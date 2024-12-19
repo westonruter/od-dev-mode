@@ -22,10 +22,20 @@ namespace OptimizationDetective\DevMode;
 
 // During development, setting the storage lock TTL to zero is useful to set to zero so you can quickly collect new URL
 // Metrics by reloading the page without having to wait for the storage lock to release.
-add_filter( 'od_url_metric_storage_lock_ttl', '__return_zero' );
+add_filter(
+	'od_url_metric_storage_lock_ttl',
+	static function () {
+		return 0;
+	}
+);
 
 // During development, this can be useful to set to zero so that you don't have to wait for new URL Metrics to be requested when engineering a new optimization.
-add_filter( 'od_url_metric_freshness_ttl', '__return_zero' );
+add_filter(
+	'od_url_metric_freshness_ttl',
+	static function () {
+		return 0;
+	}
+);
 
 // During development, it may be helpful to reduce the sample size to 1 so that you don't have to keep reloading the page
 // to collect new URL Metrics to flush out stale ones during active development.
