@@ -6,7 +6,7 @@
  * Requires at least: 6.5
  * Requires PHP: 7.2
  * Requires Plugins: optimization-detective
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Weston Ruter
  * Author URI: https://weston.ruter.net/
  * License: GPLv2 or later
@@ -46,13 +46,10 @@ add_filter(
 	}
 );
 
-// Force URL Metrics to be collected even when logged-in as an administrator.
-add_filter( 'od_can_optimize_response', '__return_true' );
-
 // During development when you have the DevTools console open on the bottom, for example, the viewport aspect ratio will be larger than normal.
 add_filter(
 	'od_maximum_viewport_aspect_ratio',
-	static function () {
+	static function (): int {
 		return PHP_INT_MAX;
 	}
 );
@@ -60,7 +57,7 @@ add_filter(
 // During development when you have the DevTools console open on the right, the viewport aspect ratio will be smaller than normal.
 add_filter(
 	'od_minimum_viewport_aspect_ratio',
-	static function () {
+	static function (): int {
 		return 0;
 	}
 );
