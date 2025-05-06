@@ -9,3 +9,7 @@ if [ -e "$plugin_slug.zip" ]; then
 fi
 
 git archive --format=zip --output="$plugin_slug.zip" HEAD
+
+unzip -l "$plugin_slug.zip"
+
+echo "$(pwd)/$plugin_slug.zip"
